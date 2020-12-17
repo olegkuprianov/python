@@ -9,7 +9,7 @@ server folders
 test_py/test_1
 
 """
-import mysql.connector
+#import mysql.connector
 from datetime import datetime
 from datetime import timedelta
 
