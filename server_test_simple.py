@@ -21,3 +21,4 @@ phrase = 'Hello! Test_1'
 with open('text.txt', 'a', encoding='utf-8') as text_file:
     text_file.write(today)
     
+text_file.close()
