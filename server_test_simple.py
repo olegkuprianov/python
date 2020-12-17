@@ -10,8 +10,14 @@ test_py/test_1
 
 """
 
+from datetime import datetime
+from datetime import timedelta
+
+today = datetime.today()
+today = today.strftime('%Y-%m-%d %H:%M:%S')
+
 phrase = 'Hello! Test_1'
 
 with open("text.txt", "w") as text_file:
-    text_file.write(phrase)
+    text_file.write(today)
     
