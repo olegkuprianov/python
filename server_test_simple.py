@@ -18,6 +18,6 @@ today = today.strftime('%Y-%m-%d %H:%M:%S')
 
 phrase = 'Hello! Test_1'
 
-with open("text.txt", "w") as text_file:
+with open('text.txt', 'a', encoding='utf-8') as text_file:
     text_file.write(today)
     
