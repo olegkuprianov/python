@@ -77,7 +77,7 @@ with open('text.txt', 'w') as text_file:
 text_file.close()
 
 #write new data to mysql
-#sql_query = "INSERT INTO attribution (appmetrica_device_id,tracker_name,os_name,install_datetime) VALUES (%s, %s, %s, %s)"
-#mycursor.executemany(sql_query,data_installations_list)
-#db_connection.commit()
-#db_connection.close()
+sql_query = "INSERT INTO attribution (appmetrica_device_id,tracker_name,os_name,install_datetime) VALUES (%s, %s, %s, %s)"
+mycursor.executemany(sql_query,data_installations_list)
+db_connection.commit()
+db_connection.close()
