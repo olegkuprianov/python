@@ -64,10 +64,20 @@ data_installations = def_test_api.logs_api_export(app_id = 3188596,
 
 data_installations_csv = StringIO(data_installations)
 data_installations_df = pd.read_csv(data_installations_csv, sep=",")
+
+#convert date formar y-m-d h-m-s to y-m-d
+data_installations_df['install_datetime'] = pd.to_datetime(data_installations_df['install_datetime'],format = '%Y-%m-%d %H:%M:%S')
+data_installations_df['install_datetime'] = data_installations_df['install_datetime'].dt.strftime('%Y-%m-%d')
+
 data_installations_list = data_installations_df.values.tolist()
+data_installations_str = str(data_installations_df)
+
+with open('text.txt', 'w') as text_file:
+    text_file.write(data_installations_str)    
+text_file.close()
 
 #write new data to mysql
-sql_query = "INSERT INTO attribution (appmetrica_device_id,tracker_name,os_name,install_datetime) VALUES (%s, %s, %s, %s)"
-mycursor.executemany(sql_query,data_installations_list)
-db_connection.commit()
-db_connection.close()
+#sql_query = "INSERT INTO attribution (appmetrica_device_id,tracker_name,os_name,install_datetime) VALUES (%s, %s, %s, %s)"
+#mycursor.executemany(sql_query,data_installations_list)
+#db_connection.commit()
+#db_connection.close()
