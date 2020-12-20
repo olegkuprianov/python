@@ -75,7 +75,7 @@ data_events_list = data_events_df.values.tolist()
 #write new data to mysql
 sql_query = "INSERT INTO events (appmetrica_device_id,event_name,event_json,os_name,event_datetime) VALUES (%s, %s, %s, %s, %s)"
 mycursor.executemany(sql_query,data_events_list)
-db_connection.commit()
+#db_connection.commit()
 db_connection.close()
 
 
