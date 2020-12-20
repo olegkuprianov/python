@@ -12,13 +12,6 @@ import  pandas as pd
 import def_test_api
 from io import StringIO
 
-#connection params
-host = 'localhost'
-user = 'oleg_user'
-passwd = 'kz59qj07w'
-database = 'appmetrica'
-table = 'attribution'
-
 yesterday = datetime.today() - timedelta(days=1)
 yesterday_ymd = yesterday.strftime('%Y-%m-%d')
 
