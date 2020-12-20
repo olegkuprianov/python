@@ -76,16 +76,16 @@ data_events_df['event_datetime'] = data_events_df['event_datetime'].dt.strftime(
 data_events_df = data_events_df.fillna(0)
 
 data_events_list = data_events_df.values.tolist()
-data_events_str = str(data_events_df)
+#data_events_str = str(data_events_df)
 
-with open('text.txt', 'w') as text_file:
-    text_file.write(data_events_str)
-text_file.close()
+#with open('text.txt', 'w') as text_file:
+    #text_file.write(data_events_str)
+#text_file.close()
 
 #write new data to mysql
-#sql_query = "INSERT INTO events (appmetrica_device_id,event_name,event_json,os_name,event_datetime) VALUES (%s, %s, %s, %s, %s)"
-#mycursor.executemany(sql_query,data_events_list)
-#db_connection.commit()
+sql_query = "INSERT INTO events (appmetrica_device_id,event_name,event_json,os_name,event_datetime) VALUES (%s, %s, %s, %s, %s)"
+mycursor.executemany(sql_query,data_events_list)
+db_connection.commit()
 db_connection.close()
 
 
