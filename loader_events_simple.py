@@ -13,7 +13,7 @@ import def_test_api
 from io import StringIO
 
 #connection params
-host = '95.181.198.34'
+host = 'localhost'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
@@ -47,7 +47,7 @@ data_events_list = data_events_df.values.tolist()
 #text_file.close()
 
 #connection params
-host = '95.181.198.34'
+host = 'localhost'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
