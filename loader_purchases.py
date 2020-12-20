@@ -13,7 +13,7 @@ from datetime import datetime
 from datetime import timedelta
 
 #connection params
-host = '95.181.198.34'
+host = 'localhost'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
