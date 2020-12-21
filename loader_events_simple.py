@@ -23,7 +23,7 @@ data_events = def_test_api.logs_api_export(app_id = 3188596,
                              date_since = date_since, date_until = date_until,
                              type_report = 'events', 
                              fields = 'appmetrica_device_id,event_name,event_json,os_name,event_datetime')
-
+data_events_df = data_events
 #data_events_csv = StringIO(data_events)
 #data_events_df = pd.read_csv(data_events_csv, sep=",")
 
