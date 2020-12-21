@@ -41,7 +41,7 @@ data_events_list = data_events_df.values.tolist()
 #text_file.close()
 
 #connection params
-host = 'localhost'
+host = '95.181.198.34'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
