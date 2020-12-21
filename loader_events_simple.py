@@ -18,8 +18,6 @@ yesterday_ymd = yesterday.strftime('%Y-%m-%d')
 date_since = yesterday_ymd
 date_until = yesterday_ymd
 
-db_connection.close()
-
 #get data from appmetrica logs api
 data_events = def_test_api.logs_api_export(app_id = 3188596, 
                              date_since = date_since, date_until = date_until,
