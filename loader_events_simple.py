@@ -53,8 +53,8 @@ db_connection = mysql.connector.connect(
   user=user,
   passwd=passwd,
   database=database
-  #use_unicode=True,
-  #charset='utf8'  
+  use_unicode=True,
+  charset='CP1252'  
 )
 mycursor = db_connection.cursor()
 
