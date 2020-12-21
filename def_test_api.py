@@ -29,8 +29,8 @@ def logs_api_export(app_id: str,
     while response.status_code != 200:
         time.sleep(5)
         response = requests.get(url, params=params,headers=headers,stream=True)        
-    response_string = StringIO(response.text)
-    df = pd.read_csv(response_string, sep=",")
+
     #string_get = response.text
-    return df
+    response_string = response.content.decode('utf8')
+    return response_string
 
