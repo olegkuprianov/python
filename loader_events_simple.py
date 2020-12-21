@@ -30,7 +30,6 @@ data_events_df = pd.read_csv(data_events_csv, sep=",")
 #convert date formar y-m-d h-m-s to y-m-d
 data_events_df['event_datetime'] = pd.to_datetime(data_events_df['event_datetime'],format = '%Y-%m-%d %H:%M:%S')
 data_events_df['event_datetime'] = data_events_df['event_datetime'].dt.strftime('%Y-%m-%d')
-data_events_df['event_json'] = data_events_df['event_json'].str.encode('utf8')
 data_events_df = data_events_df.fillna(0)
 
 data_events_list = data_events_df.values.tolist()
@@ -41,7 +40,7 @@ data_events_list = data_events_df.values.tolist()
 #text_file.close()
 
 #connection params
-host = 'localhost'
+host = '95.181.198.34'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
@@ -52,9 +51,7 @@ db_connection = mysql.connector.connect(
   host=host,
   user=user,
   passwd=passwd,
-  database=database,
-  use_unicode=True,
-  charset='utf8'
+  database=database
 )
 mycursor = db_connection.cursor()
 
