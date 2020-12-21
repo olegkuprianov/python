@@ -26,6 +26,7 @@ data_events = def_test_api.logs_api_export(app_id = 3188596,
 
 data_events_csv = StringIO(data_events)
 data_events_df = pd.read_csv(data_events_csv, sep=",")
+data_events_df = data_events_df[data_events_df['event_name'] == 'order_paid']
 
 #convert date formar y-m-d h-m-s to y-m-d
 data_events_df['event_datetime'] = pd.to_datetime(data_events_df['event_datetime'],format = '%Y-%m-%d %H:%M:%S')
@@ -34,7 +35,7 @@ data_events_df['event_datetime'] = data_events_df['event_datetime'].dt.strftime(
 data_events_df = data_events_df.fillna(0)
 
 data_events_list = data_events_df.values.tolist()
-data_events_str = str(data_events_df)
+data_events_str = str(data_events_df['event_json'])
 
 with open('text.txt', 'w') as text_file:
     text_file.write(data_events_str)
