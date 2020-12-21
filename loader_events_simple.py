@@ -30,11 +30,8 @@ data_events_df = pd.read_csv(data_events_csv, sep=",")
 #convert date formar y-m-d h-m-s to y-m-d
 data_events_df['event_datetime'] = pd.to_datetime(data_events_df['event_datetime'],format = '%Y-%m-%d %H:%M:%S')
 data_events_df['event_datetime'] = data_events_df['event_datetime'].dt.strftime('%Y-%m-%d')
+data_events_df['event_json'] = data_events_df['event_json'].str.encode('utf8')
 data_events_df = data_events_df.fillna(0)
-
-test = str(data_events_df['event_json'])
-test1 = test.encode("utf-8").strip()[:65535]
-data_events_df['event_json'] = test1
 
 data_events_list = data_events_df.values.tolist()
 #data_events_str = str(data_events_df)
