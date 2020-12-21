@@ -52,7 +52,7 @@ db_connection = mysql.connector.connect(
   host=host,
   user=user,
   passwd=passwd,
-  database=database
+  database=database,
   use_unicode=True,
   charset='CP1252'  
 )
