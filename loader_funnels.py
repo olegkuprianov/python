@@ -48,7 +48,7 @@ def create_funn_created (iter_df, exp_type:chr, funn_type:chr):
     return(iter_ser)
 
 #connection params
-host = '95.181.198.34'
+host = 'localhost'
 user = 'oleg_user'
 passwd = 'kz59qj07w'
 database = 'appmetrica'
