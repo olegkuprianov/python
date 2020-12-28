@@ -80,7 +80,7 @@ created_id_list = created_id_df.appmetrica_device_id.tolist()
 db_connection.close()
 
 #funnels
-yesterday = datetime.today() - timedelta(days=2)
+yesterday = datetime.today() - timedelta(days=1)
 date_query = yesterday.strftime('%Y-%m-%d')
     
 db_connection = mysql.connector.connect(
