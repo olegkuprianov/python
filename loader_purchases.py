@@ -47,7 +47,7 @@ db_connection = mysql.connector.connect(
 )
 mycursor = db_connection.cursor()
 
-yesterday = datetime.today() - timedelta(days=2)
+yesterday = datetime.today() - timedelta(days=3)
 yesterday_ymd = yesterday.strftime('%Y-%m-%d')
 
 mycursor.execute('SELECT * FROM events WHERE event_name = "order_paid" AND event_datetime = ("' + yesterday_ymd + '") ORDER BY event_datetime')
