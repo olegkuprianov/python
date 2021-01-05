@@ -11,6 +11,7 @@ import json
 import numpy as np
 from datetime import datetime
 from datetime import timedelta
+import sys
 
 #connection params
 host = 'localhost'
@@ -46,17 +47,19 @@ db_connection = mysql.connector.connect(
 )
 mycursor = db_connection.cursor()
 
-yesterday = datetime.today() - timedelta(days=1)
+yesterday = datetime.today() - timedelta(days=2)
 yesterday_ymd = yesterday.strftime('%Y-%m-%d')
 
 mycursor.execute('SELECT * FROM events WHERE event_name = "order_paid" AND event_datetime = ("' + yesterday_ymd + '") ORDER BY event_datetime')
 purchases = mycursor.fetchall()
 db_connection.close()
 
+if len(purchases) == 0:
+    sys.exit()
+
 #convert list to df
 df_purchases0 = pd.DataFrame(purchases)
 df_purchases0.columns = ['appmetrica_device_id','event_name','event_json','os_name','event_datetime']
-df_purchases0 = df_purchases0[(df_purchases0.event_datetime > '2020-07-15')]
 df_purchases0 = df_purchases0.reset_index(drop=True)
 ser_purchases = df_purchases0.event_json
 ser_purchases = ser_purchases.reset_index(drop=True)
