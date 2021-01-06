@@ -68,6 +68,7 @@ mycursor.execute('SELECT appmetrica_device_id FROM purchases')
 purchases_id_list = mycursor.fetchall()
 purchases_id_df = pd.DataFrame(purchases_id_list)
 purchases_id_df.columns = ['appmetrica_device_id']
+purchases_id_df = purchases_id_df.drop_duplicates(subset=['appmetrica_device_id'])
 purchases_id_list = purchases_id_df.appmetrica_device_id.tolist()
 
 #get created id
@@ -75,6 +76,7 @@ mycursor.execute('SELECT appmetrica_device_id FROM events WHERE event_name = "pr
 created_id_list = mycursor.fetchall()
 created_id_df = pd.DataFrame(created_id_list)
 created_id_df.columns = ['appmetrica_device_id']
+created_id_df = created_id_df.drop_duplicates(subset=['appmetrica_device_id'])
 created_id_list = created_id_df.appmetrica_device_id.tolist()
 
 db_connection.close()
@@ -100,10 +102,12 @@ events_df = events_df0
     
 funn_mod_df = events_df[(events_df.event_name.isin(['open_cart','order_reg','open_pay_button','order_paid']))]
 funn_mod_df = funn_mod_df.reset_index(drop = True)
+funn_mod_set = set(funn_mod_df.appmetrica_device_id)
 funn_id_df = events_df[(events_df.event_name == 'product_added_to_cart')]
 funn_id_df = funn_id_df.reset_index(drop = True)
-    
-funn_diff_df = set(funn_mod_df.appmetrica_device_id).symmetric_difference(funn_id_df.appmetrica_device_id)
+funn_id_set = set(funn_id_df.appmetrica_device_id)
+funn_diff_df = funn_mod_set.difference(funn_id_set)
+
 funn_diff_df = list(funn_diff_df)
 funn_mod_df = funn_mod_df[~funn_mod_df.appmetrica_device_id.isin(funn_diff_df)]
     
